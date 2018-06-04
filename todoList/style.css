@@ -1,0 +1,9 @@
+#list li {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+#list li.done {
+    text-decoration: line-through;
+}
+
+

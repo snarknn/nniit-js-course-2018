@@ -24,4 +24,35 @@ window.onload = function(){
         list.appendChild(li);
         inputEl.value = '';
     })
+
+
+    var timer = setInterval(timerFunc, 1000);
+    var timerDiv = document.getElementById('time');
+
+    function timerFunc(){
+        var t = new Date()
+        timerDiv.innerHTML = t.getHours()+':'
+        + t.getMinutes() + ':'
+        + t.getSeconds();
+    }
+
+
+    function getTimer(){
+        var i = 0;
+
+        return function(maxI){
+            if (i < maxI) {
+                setInterval(function(){
+                    console.log(maxI + '-' + i++);
+                }, 1000)
+            }
+        }
+    }
+
+    var t = getTimer();
+    t(10);
+
+
+ 
+
 }

@@ -26,33 +26,66 @@ window.onload = function(){
     })
 
 
-    var timer = setInterval(timerFunc, 1000);
-    var timerDiv = document.getElementById('time');
+    // var timer = setInterval(timerFunc, 1000);
+    // var timerDiv = document.getElementById('time');
 
-    function timerFunc(){
-        var t = new Date()
-        timerDiv.innerHTML = t.getHours()+':'
-        + t.getMinutes() + ':'
-        + t.getSeconds();
-    }
+    // function timerFunc(){
+    //     var t = new Date()
+    //     timerDiv.innerHTML = t.getHours()+':'
+    //     + t.getMinutes() + ':'
+    //     + t.getSeconds();
+    // }
 
+//old
+    // function getTimer(){
+    //    var i = 0;
+     
+    //     return function(maxI){
+    //         if (i < maxI) {
+    //             setInterval(function(){
+    //                 console.log(maxI + '-' + i++);
+    //             }, 1000)
+    //         }
+    //     }
+    
+    // }
+
+//end  old
 
     function getTimer(){
-        var i = 0;
-
+       var i = 0;
+     
         return function(maxI){
-            if (i < maxI) {
-                setInterval(function(){
+        
+               var set= setInterval(function(){
                     console.log(maxI + '-' + i++);
-                }, 1000)
-            }
+                }, 1000);
+                setTimeout(function(){clearInterval(set)},maxI*1000);//the condition for exit, when: maxI*1000 it's delay
+            
         }
+    
     }
+     
+    var startTimer10 = getTimer();
+    startTimer10(10);
 
-    var t = getTimer();
-    t(10);
+
+    var fibonachi = document.getElementById('fibonachi');
+    function fib(n){
+   
+        var cal= function calculation(i,j,n){
+            if (n < 2)
+                return j;
+             else
+                return calculation(j,i+j,n -1);
+            };
+            return cal(0,1,n);
+
+};
+
+    fibonachi.innerHTML="фибоначи от 100+ "+fib(100);
 
 
- 
+
 
 }

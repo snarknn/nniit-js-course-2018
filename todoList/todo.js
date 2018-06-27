@@ -26,31 +26,55 @@ window.onload = function(){
     })
 
 
-    var timer = setInterval(timerFunc, 1000);
-    var timerDiv = document.getElementById('time');
+    function timer(elId){
+        var t = new Date();
 
-    function timerFunc(){
-        var t = new Date()
-        timerDiv.innerHTML = t.getHours()+':'
-        + t.getMinutes() + ':'
-        + t.getSeconds();
-    }
+        setInterval(function(){
+            t =new Date();
+            outDate();
+        }, 1000)
 
+        function outDate(){
+            var timerDiv = document.getElementById(elId);
 
-    function getTimer(){
-        var i = 0;
-
-        return function(maxI){
-            if (i < maxI) {
-                setInterval(function(){
-                    console.log(maxI + '-' + i++);
-                }, 1000)
-            }
+            timerDiv.innerHTML = t.getHours()+':'
+                + t.getMinutes() + ':'
+                + t.getSeconds();
         }
     }
 
-    var t = getTimer();
-    t(10);
+    var newTimer = new timer('time');
+
+
+
+
+    ///////////////////////////////
+
+    // var timer = setInterval(timerFunc, 1000);
+    // var timerDiv = document.getElementById('time');
+
+    // function timerFunc(){
+    //     var t = new Date()
+    //     timerDiv.innerHTML = t.getHours()+':'
+    //     + t.getMinutes() + ':'
+    //     + t.getSeconds();
+    // }
+
+
+    // function getTimer(){
+    //     var i = 0;
+
+    //     return function(maxI){
+    //         if (i < maxI) {
+    //             setInterval(function(){
+    //                 console.log(maxI + '-' + i++);
+    //             }, 1000)
+    //         }
+    //     }
+    // }
+
+    // var t = getTimer();
+    // t(10);
 
 
  
